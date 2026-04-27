@@ -44,6 +44,7 @@ class Grocery3 extends Product3 {
         super(id, name, price, stock);
     }
     double priceAfterDiscount() { return price * 0.95; }
+<<<<<<< HEAD
 }
 
 class User3 {
@@ -57,6 +58,22 @@ class Cart3 {
     int count = 0;
 
     void addProduct(Product3 p, int quantity) {
+=======
+}
+
+
+class Cart {
+    String customerName;         // User আলাদা class নেই, নাম সরাসরি রাখছি
+    Product[] products = new Product[10];
+    int[] qty = new int[10];
+    int count = 0;
+
+    Cart(String customerName) {
+        this.customerName = customerName;
+    }
+
+    void addProduct(Product p, int quantity) {
+>>>>>>> e769023c33d319f62017a1f66912117bcf541fc7
         if (p.reduceStock(quantity)) {
             products[count] = p;
             qty[count] = quantity;
@@ -72,6 +89,7 @@ class Cart3 {
         }
     }
 
+<<<<<<< HEAD
     Order3 checkout(User3 user) {
         return new Order3(user, products, qty, count);
     }
@@ -100,10 +118,29 @@ class Order3 {
                     "  Price: " + price + " | Total: " + itemTotal);
             total += itemTotal;
         }
+=======
+
+    void generateInvoice() {
+        double total = 0;
+        System.out.println("\n--- INVOICE ---");
+        System.out.println("Customer: " + customerName);
+
+        for (int i = 0; i < count; i++) {
+            double price = products[i].priceAfterDiscount();
+            double itemTotal = price * qty[i];
+            System.out.println(products[i].name +
+                    "  Qty: " + qty[i] +
+                    "  Price: " + price +
+                    " | Total: " + itemTotal);
+            total += itemTotal;
+        }
+
+>>>>>>> e769023c33d319f62017a1f66912117bcf541fc7
         System.out.println("TOTAL: " + total);
     }
 }
 
+<<<<<<< HEAD
 public class ShoppingCart {
     public static void main(String[] args) {
 
@@ -124,10 +161,28 @@ public class ShoppingCart {
         for (int i = 0; i < allProducts.length; i++) {
             cart.addProduct(allProducts[i], quantities[i]);
         }
+=======
+public class SimpleShop {
+    public static void main(String[] args) {
 
+        // Cart বানাও, নাম দিয়ে দাও
+        Cart cart = new Cart("Prothoy");
+
+        // Product যোগ করো
+        cart.addProduct(new Electronics(1, "Laptop", 1000, 5), 1);
+        cart.addProduct(new Clothing(2, "Shirt", 50, 10), 2);
+        cart.addProduct(new Grocery(3, "Rice", 20, 15), 3);
+>>>>>>> e769023c33d319f62017a1f66912117bcf541fc7
+
+        // দেখো কী আছে cart-এ
         cart.showCart();
 
+<<<<<<< HEAD
         Order3 order = cart.checkout(user);
         order.generateInvoice();
+=======
+        // Invoice বের করো — এখন একদম সরাসরি!
+        cart.generateInvoice();
+>>>>>>> e769023c33d319f62017a1f66912117bcf541fc7
     }
 }

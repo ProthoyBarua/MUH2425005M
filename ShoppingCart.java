@@ -104,7 +104,7 @@ class Order3 {
     }
 }
 
-public class Shopping {
+public class ShoppingCart {
     public static void main(String[] args) {
 
         User3 user = new User3("Prothoy");
@@ -120,7 +120,7 @@ public class Shopping {
         
         int[] quantities = {1, 2, 3};
 
-        // loop দিয়ে সব product cart-এ যোগ করো
+       ো
         for (int i = 0; i < allProducts.length; i++) {
             cart.addProduct(allProducts[i], quantities[i]);
         }
